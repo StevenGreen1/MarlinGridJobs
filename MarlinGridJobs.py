@@ -89,16 +89,15 @@ def getMarlinSteeringFileTemplate(baseFileName,calibrationFileName):
 
 ### ----------------------------------------------------------------------------------------------------
 
-def getSlcioFiles(mokkaJobNumber, energyList, eventTypeList):
+def getSlcioFiles(mokkaJobNumber, energy, eventType):
     slcioFiles = []
-    for eventType in eventTypeList:
-        for energy in energyList:
-            os.system('dirac-ilc-find-in-FC /ilc MokkaJobNumber=' + str(mokkaJobNumber) + ' Energy=' + str(energy) + ' Type="' + eventType + '" > tmp.txt')
-            with open('tmp.txt') as f:
-                lines = f.readlines()
-                for idx, line in enumerate(lines):
-                    line = line.strip()
-                    slcioFiles.append(line)
+    os.system('dirac-ilc-find-in-FC /ilc MokkaJobNumber=' + str(mokkaJobNumber) + ' Energy=' + str(energy) + ' Type="' + eventType + '" > tmp.txt')
+    with open('tmp.txt') as f:
+        lines = f.readlines()
+        for idx, line in enumerate(lines):
+            line = line.strip()
+            slcioFiles.append(line)
+    os.system('rm tmp.txt')
     return slcioFiles
 
 ### ----------------------------------------------------------------------------------------------------

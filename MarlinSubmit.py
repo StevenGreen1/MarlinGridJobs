@@ -10,72 +10,100 @@ from ILCDIRAC.Interfaces.API.NewInterface.Applications import *
 
 from MarlinGridJobs import *
 
-JobIdentificationString = 'Testing'
-diracInstance = DiracILC(withRepo=True,repoLocation="%s.cfg" %( JobIdentificationString))
-
 #===== User Input =====
 
-mokkaJobNumber = 38
-energy = ['1','2','3','4','5','6','7','8','9','10','15','20','25','30','35','40','45','50']
-eventType = ['Kaon0L']
+gridJobNumber = 38 # Default detector model
+recoStageNumber = 36 
 
-baseXmlFile = ''
+eventsToSimulate = [ #{ 'EventType': "Kaon0L"  , 'Energies':  ['1','2','3','4','5','6','7','8','9','10','15','20','25','30','35','40','45','50'] }
+                     #{ 'EventType': "Z_uds"   , 'Energies':  [91, 200, 360, 500, 750, 1000, 2000, 3000]                                         },
+                     #{ 'EventType': "Photon"  , 'Energies':  [10]                                                                               },
+                     { 'EventType': "Kaon0L"  , 'Energies':  ['1']                                                                               }
+                     #{ 'EventType': "Muon"    , 'Energies':  [10]                                                                               }
+                   ]
+
+baseXmlFile = 'TemplateRepository/MarlinSteeringFileTemplate_SingleParticles_1.xml'
 
 pandoraSettingsFiles = {}
-pandoraSettingsFiles['Default'] = '' 
-pandoraSettingsFiles['Default_LikelihoodData'] = '' 
-pandoraSettingsFiles['Muon'] = ''
-pandoraSettingsFiles['PerfectPhoton'] = ''
-pandoraSettingsFiles['PerfectPhotonNK0L'] = ''
-pandoraSettingsFiles['PerfectPFA'] = ''
+pandoraSettingsFiles['Default'] = 'PandoraSettings/PandoraSettingsDefault_SiW_5x5.xml' 
+pandoraSettingsFiles['Default_LikelihoodData'] = 'PandoraSettings/PandoraLikelihoodData9EBin_SiW_5x5.xml' 
+pandoraSettingsFiles['Muon'] = 'PandoraSettings/PandoraSettingsMuon.xml'
+pandoraSettingsFiles['PerfectPhoton'] = 'PandoraSettings/PandoraSettingsPerfectPhoton.xml'
+pandoraSettingsFiles['PerfectPhotonNK0L'] = 'PandoraSettings/PandoraSettingsPerfectPhotonNeutronK0L.xml'
+pandoraSettingsFiles['PerfectPFA'] = 'PandoraSettings/PandoraSettingsPerfectPFA.xml'
 
-gearFile = 'ILD_o1_v06_5x5_30x30.gear'
+#===== Second level user input =====
+# If using naming scheme doesn't need changing 
 
-calibConfigFile = 'CalibrationConfig.py'
+gearFile = '/r04/lc/sg568/HCAL_Optimisation_Studies/GridSandboxes/GJN' + str(gridJobNumber) + '_OutputSandbox/ILD_o1_v06_GJN' + str(gridJobNumber) + '.gear'
+calibConfigFile = 'CalibrationConfigFiles/Stage' + str(recoStageNumber) + 'Config_5x5_30x30.py'
 
 #=====
 
-slcioFilesToProcess = getSlcioFiles(mokkaJobNumber, energy, eventType)
+# Copy gear file and pandora settings files to local directory as is needed for submission.
+os.system('cp ' + gearFile + ' .')
+gearFileLocal = os.path.basename(gearFile)
 
-for slcioFile in slcioFilesToProcess:
-    marlinSteeringTemplate = ''
-    marlinSteeringTemplate = getMarlinSteeringFileTemplate('baseFileName.xml',calibConfigFile)
-    marlinSteeringTemplate = setPandoraSettingsFile(marlinSteeringTemplate,pandoraSettingsFiles)
-    marlinSteeringTemplate = setGearFile(marlinSteeringTemplate,gearFile)
+pandoraSettingsFilesLocal = {}
+for key, value in pandoraSettingsFiles.iteritems():
+    os.system('cp ' + value + ' .')
+    pandoraSettingsFilesLocal[key] = os.path.basename(value)
 
-    slcioFileNoPath = os.path.basename(slcioFile)
-    #print slcioFileNoPath
-    #print slcioFileNoPath[:-6]
+# Start submission
+JobIdentificationString = 'ReviewJER_Detector_' + str(gridJobNumber) + '_Reco_' + str(recoStageNumber)
+diracInstance = DiracILC(withRepo=True,repoLocation="%s.cfg" %( JobIdentificationString))
 
-    marlinSteeringTemplate = setInputSlcioFile(marlinSteeringTemplate,slcioFileNoPath)
-    marlinSteeringTemplate = setOutputFiles(marlinSteeringTemplate,'MarlinReco_' + slcioFileNoPath[:-6])
+for eventSelection in eventsToSimulate:
+    eventType = eventSelection['EventType']
+    for energy in eventSelection['Energies']:
+        slcioFilesToProcess = getSlcioFiles(gridJobNumber, energy, eventType)
+        #print slcioFilesToProcess
+        for slcioFile in slcioFilesToProcess:
+            marlinSteeringTemplate = ''
+            marlinSteeringTemplate = getMarlinSteeringFileTemplate(baseXmlFile,calibConfigFile)
+            marlinSteeringTemplate = setPandoraSettingsFile(marlinSteeringTemplate,pandoraSettingsFilesLocal)
+            marlinSteeringTemplate = setGearFile(marlinSteeringTemplate,gearFileLocal)
 
-    with open("MarlinSteering.steer" ,"w") as SteeringFile:
-        SteeringFile.write(marlinSteeringTemplate)
+            slcioFileNoPath = os.path.basename(slcioFile)
+            marlinSteeringTemplate = setInputSlcioFile(marlinSteeringTemplate,slcioFileNoPath)
+            marlinSteeringTemplate = setOutputFiles(marlinSteeringTemplate,'MarlinReco_' + slcioFileNoPath[:-6])
 
-    ma = Marlin()
-    ma.setVersion('ILCSoft-01-17-07')
-    ma.setSteeringFile('MarlinSteering.steer')
-    ma.setGearFile(gearFile)
-    ma.setInputFile('lfn:' + slcioFile)
+            with open("MarlinSteering.steer" ,"w") as SteeringFile:
+                SteeringFile.write(marlinSteeringTemplate)
 
-    outputRootFile = 'MarlinReco_' + slcioFileNoPath[:-6] + '.root'
-    outputSlcioFile = 'MarlinReco_' + slcioFileNoPath[:-6] + '.slcio'
+            ma = Marlin()
+            ma.setVersion('ILCSoft-01-17-07')
+            ma.setSteeringFile('MarlinSteering.steer')
+            ma.setGearFile(gearFileLocal)
+            ma.setInputFile('lfn:' + slcioFile)
 
-    job = UserJob()
-    job.setJobGroup('test')
-    job.setInputSandbox(pandoraSettingsFiles.values()) # Local files
-    job.setOutputSandbox(['*.log','*.gear','*.mac','*.steer','*.xml'])
-    job.setOutputData([outputRootFile,outputSlcioFile],OutputPath='/MarlinTesting') # On grid
-    job.setName('Testing')
-    #job.dontPromptMe()
-    res = job.append(ma)
+            outputFiles = []
+            outputFiles.append('MarlinReco_' + slcioFileNoPath[:-6] + '_Default.root')
+            outputFiles.append('MarlinReco_' + slcioFileNoPath[:-6] + '.slcio')
+            if eventType == 'Z_uds':
+                outputFiles.append('MarlinReco_' + slcioFileNoPath[:-6] + '_Muon.root')
+                outputFiles.append('MarlinReco_' + slcioFileNoPath[:-6] + '_PerfectPhoton.root')
+                outputFiles.append('MarlinReco_' + slcioFileNoPath[:-6] + '_PerfectPhotonNK0L.root')
+                outputFiles.append('MarlinReco_' + slcioFileNoPath[:-6] + '_PerfectPFA.root')
 
-    if not res['OK']:
-        print res['Message']
-        exit()
-    job.submit(diracInstance)
+            job = UserJob()
+            job.setJobGroup('ReviewJER')
+            job.setInputSandbox(pandoraSettingsFilesLocal.values()) # Local files
+            job.setOutputSandbox(['*.log','*.gear','*.mac','*.steer','*.xml'])
+            job.setOutputData(outputFiles,OutputPath='/ReviewJER/MarlinJobs/Detector_Model_' + str(gridJobNumber) + '/Reco_Stage_' + str(recoStageNumber) + '/' + eventType + '/' + energy + 'GeV') # On grid
+            job.setName('ReviewJER_Detector' + str(gridJobNumber) + '_Reco_' + str(recoStageNumber))
+            job.dontPromptMe()
+            res = job.append(ma)
+
+            if not res['OK']:
+                print res['Message']
+                exit()
+            job.submit(diracInstance)
+            os.system('rm *.cfg')
 
 # Tidy Up
 os.system('rm MarlinSteering.steer')
+os.system('rm ' + gearFileLocal)
+for key, value in pandoraSettingsFilesLocal.iteritems():
+    os.system('rm ' + value)
 

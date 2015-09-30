@@ -1,0 +1,1 @@
+Note that the 7 mm ECal trained data is actually 7.5 mm.  This was necessary to change for file naming convention.

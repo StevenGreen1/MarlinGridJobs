@@ -1,6 +1,6 @@
 # Calibration config file for testing
 # Digitisation Constants - ECal 
-CalibrECal = 42.3389890911 84.6779781822
+CalibrECal = 42.3389890911
 
 # Digitisation Constants - HCal
 CalibrHCalBarrel = 49.0977611029

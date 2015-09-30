@@ -74,7 +74,6 @@
  <processor name="MyLCIOOutputProcessor" type="LCIOOutputProcessor">
   <!--   standard output: full reconstruction keep all collections -->
 <parameter name="LCIOOutputFile" type="string" >SLCIO_OUTPUT_FILE_XXXX</parameter>
-  </parameter>
   <parameter name="DropCollectionTypes" type="StringVec">SimTrackerHit SimCalorimeterHit TrackerHit</parameter>
   <parameter name="DropCollectionNames" type="StringVec">RelationCaloHit SiTracksMCP TPCTracksMCP LDCTracksMCP SiTracks TPCTracks</parameter>
   <parameter name="LCIOWriteMode" type="string" value="WRITE_NEW"/>

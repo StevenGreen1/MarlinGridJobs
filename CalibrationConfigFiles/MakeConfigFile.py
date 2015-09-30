@@ -117,9 +117,11 @@ with open(inputSteeringFile) as openFile:
             if matchObj:
                 MaxHCalHitHadronicEnergy = matchObj.group(2).strip()
 
+CalibrECALToPrint = CalibrECAL.split()
+
 configFileString = '# Calibration config file for testing\n' 
 configFileString += '# Digitisation Constants - ECal \n'
-configFileString += 'CalibrECal = ' + CalibrECAL + '\n'
+configFileString += 'CalibrECal = ' + CalibrECALToPrint[0] + '\n'
 configFileString += '\n'
 
 configFileString += '# Digitisation Constants - HCal\n'

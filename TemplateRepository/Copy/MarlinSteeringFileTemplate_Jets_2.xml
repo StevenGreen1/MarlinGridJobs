@@ -50,25 +50,23 @@
 
      <processor name="MyMarlinPandoraMuon"/>
      <processor name="MyPfoAnalysisMuon"/>
-     <!--processor name="MyMarlinPandoraDefault"/>
+     <processor name="MyMarlinPandoraDefault"/>
      <processor name="MyPfoAnalysisDefault"/>
      <processor name="MyMarlinPandoraPerfectPhoton"/>
      <processor name="MyPfoAnalysisPerfectPhoton"/>
      <processor name="MyMarlinPandoraPerfectPhotonNK0L"/>
      <processor name="MyPfoAnalysisPerfectPhotonNK0L"/>
      <processor name="MyMarlinPandoraPerfectPFA"/>
-     <processor name="MyPfoAnalysisPerfectPFA"/-->
+     <processor name="MyPfoAnalysisPerfectPFA"/>
 
-     <processor name="MyLCIOOutputProcessor"/>
+     <!--processor name="MyLCIOOutputProcessor"/-->
      <!--processor name="DSTOutput"/-->
    </execute>
 
    <global>
-      <parameter name="LCIOInputFiles">
-          ILD_o1_v06_uds91_00_0.slcio
-      </parameter>
-      <parameter name="GearXMLFile" value="ILD_o1_v06_5x5_30x30.gear"/>
-      <parameter name="MaxRecordNumber" value="10"/>
+      <parameter name="LCIOInputFiles">LCIO_INPUT_FILE</parameter>
+      <parameter name="GearXMLFile" value="GEAR_FILE"/>
+      <parameter name="MaxRecordNumber" value="-1"/>
       <parameter name="SkipNEvents" value="0"/>
       <parameter name="SupressCheck" value="false"/>
       <parameter name="Verbosity" options="DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT"> MESSAGE </parameter>
@@ -77,7 +75,8 @@
 
  <processor name="MyLCIOOutputProcessor" type="LCIOOutputProcessor">
   <!--   standard output: full reconstruction keep all collections -->
-  <parameter name="LCIOOutputFile" type="string" >Test2.slcio</parameter>
+  <parameter name="LCIOOutputFile" type="string" >
+  </parameter>
   <parameter name="DropCollectionTypes" type="StringVec">SimTrackerHit SimCalorimeterHit TrackerHit</parameter>
   <parameter name="DropCollectionNames" type="StringVec">RelationCaloHit SiTracksMCP TPCTracksMCP LDCTracksMCP SiTracks TPCTracks</parameter>
   <parameter name="LCIOWriteMode" type="string" value="WRITE_NEW"/>
@@ -716,14 +715,16 @@
 
 <processor name="MyILDCaloDigi" type="ILDCaloDigi">
   <!--ILD digitizer...-->
+  <!--No electronic energy truncation for the HCal-->
+  <parameter name="HCAL_maxDynamicRange_MIP" type="float">0.0</parameter>
   <!--Calibration coefficients for ECAL-->
-  <parameter name="CalibrECAL" type="FloatVec">42.3662496409 84.7324992818 </parameter>
+  <parameter name="CalibrECAL" type="FloatVec">CALIBRECAL_XXXX </parameter>
   <!--Calibration coefficients for HCAL barrel-->
-  <parameter name="CalibrHCALBarrel" type="FloatVec">50.3504586994</parameter>
+  <parameter name="CalibrHCALBarrel" type="FloatVec">CALIBRHCALBARREL_XXXX</parameter>
   <!--Calibration coefficients for HCAL endcap -->
-  <parameter name="CalibrHCALEndcap" type="FloatVec">55.6419000329</parameter>
+  <parameter name="CalibrHCALEndcap" type="FloatVec">CALIBRHCALENDCAP_XXXX</parameter>
   <!--Calibration coefficients for HCAL plug-->
-  <parameter name="CalibrHCALOther" type="FloatVec">30.5873671511</parameter>
+  <parameter name="CalibrHCALOther" type="FloatVec">CALIBRHCALOTHER_XXXX</parameter>
   <!--ECAL Collection Names-->
   <parameter name="ECALCollections" type="StringVec">EcalBarrelSiliconCollection EcalEndcapSiliconCollection  EcalEndcapRingCollection </parameter>
   <!--Index of ECal Layers-->
@@ -757,40 +758,16 @@
   <!-- Timing -->
   <parameter name="UseEcalTiming" type="int">1</parameter>
   <parameter name="UseHcalTiming" type="int">1</parameter>
-  <parameter name="ECALBarrelTimeWindowMax" type="float"> 300.0 </parameter>
-  <parameter name="HCALBarrelTimeWindowMax" type="float"> 300.0 </parameter>
-  <parameter name="ECALEndcapTimeWindowMax" type="float"> 300.0 </parameter>
-  <parameter name="HCALEndcapTimeWindowMax" type="float"> 300.0 </parameter>
+  <parameter name="ECALBarrelTimeWindowMax" type="float"> ECALBARRELTIMEWINDOWMAX_XXXX </parameter>
+  <parameter name="HCALBarrelTimeWindowMax" type="float"> HCALBARRELTIMEWINDOWMAX_XXXX </parameter>
+  <parameter name="ECALEndcapTimeWindowMax" type="float"> ECALENDCAPTIMEWINDOWMAX_XXXX </parameter>
+  <parameter name="HCALEndcapTimeWindowMax" type="float"> HCALENDCAPTIMEWINDOWMAX_XXXX </parameter>
   <parameter name="ECALTimeWindowMin" type="float"> -1.0 </parameter>
   <parameter name="HCALTimeWindowMin" type="float"> -1.0 </parameter>
   <parameter name="ECALCorrectTimesForPropagation" type="int">1</parameter>
   <parameter name="HCALCorrectTimesForPropagation" type="int">1</parameter>  
   <parameter name="ECALDeltaTimeHitResolution" type="float"> 20.0 </parameter>
   <parameter name="HCALDeltaTimeHitResolution" type="float"> 20.0 </parameter>
-  <parameter name="HCALThresholdUnit" type="string">MIP</parameter>
-  <!-- Realistic HCal -->
-  <parameter name="HCAL_apply_realistic_digi" type="int">1</parameter>
-  <parameter name="HCALThresholdUnit" type="string">MIP</parameter>
-  <parameter name="CalibHCALMIP" type="float">0.0004925</parameter>
-  <parameter name="HCAL_maxDynamicRange_MIP" type="float">99999999</parameter>
-  <parameter name="HCAL_elec_noise_mips" type="float">0.06</parameter>
-  <parameter name="HCAL_deadCellRate" type="float">0</parameter>
-  <parameter name="HCAL_PPD_N_Pixels" type="int">2000</parameter>
-  <parameter name="HCAL_PPD_PE_per_MIP" type="float">15</parameter>
-  <parameter name="HCAL_pixel_spread" type="float">0.05</parameter>
-  <parameter name="HCAL_PPD_N_Pixels_uncertainty" type="float">0</parameter>
-  <parameter name="HCAL_miscalibration_uncorrel" type="float">0</parameter>
-  <parameter name="HCAL_miscalibration_correl" type="float">0</parameter>
-  <!-- Realistic ECal -->
-  <parameter name="ECAL_apply_realistic_digi" type="int">1</parameter>
-  <parameter name="CalibECALMIP" type="float">0.0001475</parameter>
-  <parameter name="ECAL_maxDynamicRange_MIP" type="float">2500</parameter>
-  <parameter name="ECAL_elec_noise_mips" type="float">0.07</parameter>
-  <parameter name="ECAL_deadCellRate" type="float">0</parameter>
-  <parameter name="ECAL_miscalibration_uncorrel" type="float">0</parameter>
-  <parameter name="ECAL_miscalibration_uncorrel_memorise" type="bool">false</parameter>
-  <parameter name="ECAL_miscalibration_correl" type="float">0</parameter>
-  <parameter name="energyPerEHpair" type="float">3.6</parameter>
   <!-- Histograms-->
   <parameter name="Histograms" type="int"> 0 </parameter>
   <parameter name="RootFile" type="string">Digi_SiW.root</parameter>
@@ -849,7 +826,7 @@
  <processor name="MySimpleMuonDigi" type="SimpleMuonDigi">
  <!--Performs simple digitization of sim calo hits...-->
   <!--Calibration coefficients for MUON-->
-  <parameter name="CalibrMUON" type="FloatVec">56.7</parameter>
+  <parameter name="CalibrMUON" type="FloatVec">CALIBRMUON_XXXX</parameter>
   <!-- maximum hit energy for a MUON hit -->
   <parameter name="MaxHitEnergyMUON" type="float">2.0</parameter>
   <!--MUON Collection Names-->
@@ -945,7 +922,7 @@
 <!--########## MarlinPandora ###################################### -->
 
 <processor name="MyMarlinPandoraMuon" type="PandoraPFANewProcessor">
-  <parameter name="PandoraSettingsXmlFile" type="String"> PandoraSettingsDefault_SiW_5x5.xml </parameter>
+  <parameter name="PandoraSettingsXmlFile" type="String"> PANDORA_SETTINGS_MUON_FILE </parameter>
   <!-- Collection names -->
   <parameter name="TrackCollections" type="StringVec">MarlinTrkTracks</parameter>
   <parameter name="ECalCaloHitCollections" type="StringVec">ECALBarrel ECALEndcap ECALOther</parameter>
@@ -963,18 +940,18 @@
   <parameter name="ClusterCollectionName" type="String">PandoraClustersMuon</parameter>
   <parameter name="PFOCollectionName" type="String">PandoraPFOsMuon</parameter>
   <!-- Calibration constants -->
-  <parameter name="ECalToMipCalibration" type="float">153.846</parameter>
-  <parameter name="HCalToMipCalibration" type="float">36.1011</parameter>
+  <parameter name="ECalToMipCalibration" type="float">ECALTOMIP_XXXX</parameter>
+  <parameter name="HCalToMipCalibration" type="float">HCALTOMIP_XXXX</parameter>
   <parameter name="ECalMipThreshold" type="float">0.5</parameter>
   <parameter name="HCalMipThreshold" type="float">0.3</parameter>
-  <parameter name="ECalToEMGeVCalibration" type="float">1.00215973193</parameter>
-  <parameter name="HCalToEMGeVCalibration" type="float">1.00215973193</parameter>
-  <parameter name="ECalToHadGeVCalibrationBarrel" type="float">1.12219237098</parameter>
-  <parameter name="ECalToHadGeVCalibrationEndCap" type="float">1.12219237098</parameter>
-  <parameter name="HCalToHadGeVCalibration" type="float">1.05372579725</parameter>
-  <parameter name="MuonToMipCalibration" type="float">10.101</parameter>
+  <parameter name="ECalToEMGeVCalibration" type="float">ECALTOEM_XXXX</parameter>
+  <parameter name="HCalToEMGeVCalibration" type="float">HCALTOEM_XXXX</parameter>
+  <parameter name="ECalToHadGeVCalibrationBarrel" type="float">ECALTOHAD_XXXX</parameter>
+  <parameter name="ECalToHadGeVCalibrationEndCap" type="float">ECALTOHAD_XXXX</parameter>
+  <parameter name="HCalToHadGeVCalibration" type="float">HCALTOHAD_XXXX</parameter>
+  <parameter name="MuonToMipCalibration" type="float">MUONTOMIP_XXXX</parameter>
   <parameter name="DigitalMuonHits" type="int">0</parameter>
-  <parameter name="MaxHCalHitHadronicEnergy" type="float">1000000.0</parameter>
+  <parameter name="MaxHCalHitHadronicEnergy" type="float">MHHHE_XXXX</parameter>
   <parameter name="AbsorberRadLengthECal" type="float">0.2854</parameter>
   <parameter name="AbsorberIntLengthECal" type="float">0.0101</parameter>
   <parameter name="AbsorberRadLengthHCal" type="float">0.0569</parameter>
@@ -995,13 +972,13 @@
   <!--Set the debug print level-->
   <parameter name="Printing" type="int">0 </parameter>
   <!--Name of the output root file-->
-  <parameter name="RootFile" type="string"> Test2.root </parameter>
+  <parameter name="RootFile" type="string"> PANDORA_SETTINGS_MUON_ROOT_FILE </parameter>
   <!--verbosity level of this processor ("DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT")-->
   <!--parameter name="Verbosity" type="string">DEBUG </parameter-->
 </processor>
 
 <processor name="MyMarlinPandoraDefault" type="PandoraPFANewProcessor">
-  <parameter name="PandoraSettingsXmlFile" type="String"> PandoraSettings.xml </parameter>
+  <parameter name="PandoraSettingsXmlFile" type="String"> PANDORA_SETTINGS_DEFAULT_FILE </parameter>
   <!-- Collection names -->
   <parameter name="TrackCollections" type="StringVec">MarlinTrkTracks</parameter>
   <parameter name="ECalCaloHitCollections" type="StringVec">ECALBarrel ECALEndcap ECALOther</parameter>
@@ -1019,18 +996,18 @@
   <parameter name="ClusterCollectionName" type="String">PandoraClustersDefault</parameter>
   <parameter name="PFOCollectionName" type="String">PandoraPFOsDefault</parameter>
   <!-- Calibration constants -->
-  <parameter name="ECalToMipCalibration" type="float">153.846</parameter>
-  <parameter name="HCalToMipCalibration" type="float">36.1011</parameter>
+  <parameter name="ECalToMipCalibration" type="float">ECALTOMIP_XXXX</parameter>
+  <parameter name="HCalToMipCalibration" type="float">HCALTOMIP_XXXX</parameter>
   <parameter name="ECalMipThreshold" type="float">0.5</parameter>
   <parameter name="HCalMipThreshold" type="float">0.3</parameter>
-  <parameter name="ECalToEMGeVCalibration" type="float">1.00215973193</parameter>
-  <parameter name="HCalToEMGeVCalibration" type="float">1.00215973193</parameter>
-  <parameter name="ECalToHadGeVCalibrationBarrel" type="float">1.12219237098</parameter>
-  <parameter name="ECalToHadGeVCalibrationEndCap" type="float">1.12219237098</parameter>
-  <parameter name="HCalToHadGeVCalibration" type="float">1.05372579725</parameter>
-  <parameter name="MuonToMipCalibration" type="float">10.101</parameter>
+  <parameter name="ECalToEMGeVCalibration" type="float">ECALTOEM_XXXX</parameter>
+  <parameter name="HCalToEMGeVCalibration" type="float">HCALTOEM_XXXX</parameter>
+  <parameter name="ECalToHadGeVCalibrationBarrel" type="float">ECALTOHAD_XXXX</parameter>
+  <parameter name="ECalToHadGeVCalibrationEndCap" type="float">ECALTOHAD_XXXX</parameter>
+  <parameter name="HCalToHadGeVCalibration" type="float">HCALTOHAD_XXXX</parameter>
+  <parameter name="MuonToMipCalibration" type="float">MUONTOMIP_XXXX</parameter>
   <parameter name="DigitalMuonHits" type="int">0</parameter>
-  <parameter name="MaxHCalHitHadronicEnergy" type="float">1000000.0</parameter>
+  <parameter name="MaxHCalHitHadronicEnergy" type="float">MHHHE_XXXX</parameter>
   <parameter name="AbsorberRadLengthECal" type="float">0.2854</parameter>
   <parameter name="AbsorberIntLengthECal" type="float">0.0101</parameter>
   <parameter name="AbsorberRadLengthHCal" type="float">0.0569</parameter>
@@ -1051,13 +1028,13 @@
   <!--Set the debug print level-->
   <parameter name="Printing" type="int">0 </parameter>
   <!--Name of the output root file-->
-  <parameter name="RootFile" type="string"> /r06/lc/sg568/ReviewJER/RootFiles/Stage59/5x5_30x30/ILD_o1_v06_uds91_00_0_Default.root </parameter>
+  <parameter name="RootFile" type="string"> PANDORA_SETTINGS_DEFAULT_ROOT_FILE </parameter>
   <!--verbosity level of this processor ("DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT")-->
   <!--parameter name="Verbosity" type="string">DEBUG </parameter-->
 </processor>
 
 <processor name="MyMarlinPandoraPerfectPhoton" type="PandoraPFANewProcessor">
-  <parameter name="PandoraSettingsXmlFile" type="String"> /usera/sg568/ilcsoft_v01_17_07/JEREvolution/Stage59/PandoraSettings/PandoraSettingsPerfectPhoton.xml </parameter>
+  <parameter name="PandoraSettingsXmlFile" type="String"> PANDORA_SETTINGS_PERFECT_PHOTON_FILE </parameter>
   <!-- Collection names -->
   <parameter name="TrackCollections" type="StringVec">MarlinTrkTracks</parameter>
   <parameter name="ECalCaloHitCollections" type="StringVec">ECALBarrel ECALEndcap ECALOther</parameter>
@@ -1075,18 +1052,18 @@
   <parameter name="ClusterCollectionName" type="String">PandoraClustersPerfectPhoton</parameter>
   <parameter name="PFOCollectionName" type="String">PandoraPFOsPerfectPhoton</parameter>
   <!-- Calibration constants -->
-  <parameter name="ECalToMipCalibration" type="float">153.846</parameter>
-  <parameter name="HCalToMipCalibration" type="float">36.1011</parameter>
+  <parameter name="ECalToMipCalibration" type="float">ECALTOMIP_XXXX</parameter>
+  <parameter name="HCalToMipCalibration" type="float">HCALTOMIP_XXXX</parameter>
   <parameter name="ECalMipThreshold" type="float">0.5</parameter>
   <parameter name="HCalMipThreshold" type="float">0.3</parameter>
-  <parameter name="ECalToEMGeVCalibration" type="float">1.00215973193</parameter>
-  <parameter name="HCalToEMGeVCalibration" type="float">1.00215973193</parameter>
-  <parameter name="ECalToHadGeVCalibrationBarrel" type="float">1.12219237098</parameter>
-  <parameter name="ECalToHadGeVCalibrationEndCap" type="float">1.12219237098</parameter>
-  <parameter name="HCalToHadGeVCalibration" type="float">1.05372579725</parameter>
-  <parameter name="MuonToMipCalibration" type="float">10.101</parameter>
+  <parameter name="ECalToEMGeVCalibration" type="float">ECALTOEM_XXXX</parameter>
+  <parameter name="HCalToEMGeVCalibration" type="float">HCALTOEM_XXXX</parameter>
+  <parameter name="ECalToHadGeVCalibrationBarrel" type="float">ECALTOHAD_XXXX</parameter>
+  <parameter name="ECalToHadGeVCalibrationEndCap" type="float">ECALTOHAD_XXXX</parameter>
+  <parameter name="HCalToHadGeVCalibration" type="float">HCALTOHAD_XXXX</parameter>
+  <parameter name="MuonToMipCalibration" type="float">MUONTOMIP_XXXX</parameter>
   <parameter name="DigitalMuonHits" type="int">0</parameter>
-  <parameter name="MaxHCalHitHadronicEnergy" type="float">1000000.0</parameter>
+  <parameter name="MaxHCalHitHadronicEnergy" type="float">MHHHE_XXXX</parameter>
   <parameter name="AbsorberRadLengthECal" type="float">0.2854</parameter>
   <parameter name="AbsorberIntLengthECal" type="float">0.0101</parameter>
   <parameter name="AbsorberRadLengthHCal" type="float">0.0569</parameter>
@@ -1107,13 +1084,13 @@
   <!--Set the debug print level-->
   <parameter name="Printing" type="int">0 </parameter>
   <!--Name of the output root file-->
-  <parameter name="RootFile" type="string"> /r06/lc/sg568/ReviewJER/RootFiles/Stage59/5x5_30x30/ILD_o1_v06_uds91_00_0_Perfect_Photon.root </parameter>
+  <parameter name="RootFile" type="string"> PANDORA_SETTINGS_PERFECT_PHOTON_ROOT_FILE </parameter>
   <!--verbosity level of this processor ("DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT")-->
   <!--parameter name="Verbosity" type="string">DEBUG </parameter-->
 </processor>
 
 <processor name="MyMarlinPandoraPerfectPhotonNK0L" type="PandoraPFANewProcessor">
-  <parameter name="PandoraSettingsXmlFile" type="String"> /usera/sg568/ilcsoft_v01_17_07/JEREvolution/Stage59/PandoraSettings/PandoraSettingsPerfectPhotonNeutronK0L.xml </parameter>
+  <parameter name="PandoraSettingsXmlFile" type="String"> PANDORA_SETTINGS_PERFECT_PHOTON_NEUTRON_K0L_FILE </parameter>
   <!-- Collection names -->
   <parameter name="TrackCollections" type="StringVec">MarlinTrkTracks</parameter>
   <parameter name="ECalCaloHitCollections" type="StringVec">ECALBarrel ECALEndcap ECALOther</parameter>
@@ -1131,18 +1108,18 @@
   <parameter name="ClusterCollectionName" type="String">PandoraClustersPerfectPhotonNK0L</parameter>
   <parameter name="PFOCollectionName" type="String">PandoraPFOsPerfectPhotonNK0L</parameter>
   <!-- Calibration constants -->
-  <parameter name="ECalToMipCalibration" type="float">153.846</parameter>
-  <parameter name="HCalToMipCalibration" type="float">36.1011</parameter>
+  <parameter name="ECalToMipCalibration" type="float">ECALTOMIP_XXXX</parameter>
+  <parameter name="HCalToMipCalibration" type="float">HCALTOMIP_XXXX</parameter>
   <parameter name="ECalMipThreshold" type="float">0.5</parameter>
   <parameter name="HCalMipThreshold" type="float">0.3</parameter>
-  <parameter name="ECalToEMGeVCalibration" type="float">1.00215973193</parameter>
-  <parameter name="HCalToEMGeVCalibration" type="float">1.00215973193</parameter>
-  <parameter name="ECalToHadGeVCalibrationBarrel" type="float">1.12219237098</parameter>
-  <parameter name="ECalToHadGeVCalibrationEndCap" type="float">1.12219237098</parameter>
-  <parameter name="HCalToHadGeVCalibration" type="float">1.05372579725</parameter>
-  <parameter name="MuonToMipCalibration" type="float">10.101</parameter>
+  <parameter name="ECalToEMGeVCalibration" type="float">ECALTOEM_XXXX</parameter>
+  <parameter name="HCalToEMGeVCalibration" type="float">HCALTOEM_XXXX</parameter>
+  <parameter name="ECalToHadGeVCalibrationBarrel" type="float">ECALTOHAD_XXXX</parameter>
+  <parameter name="ECalToHadGeVCalibrationEndCap" type="float">ECALTOHAD_XXXX</parameter>
+  <parameter name="HCalToHadGeVCalibration" type="float">HCALTOHAD_XXXX</parameter>
+  <parameter name="MuonToMipCalibration" type="float">MUONTOMIP_XXXX</parameter>
   <parameter name="DigitalMuonHits" type="int">0</parameter>
-  <parameter name="MaxHCalHitHadronicEnergy" type="float">1000000.0</parameter>
+  <parameter name="MaxHCalHitHadronicEnergy" type="float">MHHHE_XXXX</parameter>
   <parameter name="AbsorberRadLengthECal" type="float">0.2854</parameter>
   <parameter name="AbsorberIntLengthECal" type="float">0.0101</parameter>
   <parameter name="AbsorberRadLengthHCal" type="float">0.0569</parameter>
@@ -1163,13 +1140,13 @@
   <!--Set the debug print level-->
   <parameter name="Printing" type="int">0 </parameter>
   <!--Name of the output root file-->
-  <parameter name="RootFile" type="string"> /r06/lc/sg568/ReviewJER/RootFiles/Stage59/5x5_30x30/ILD_o1_v06_uds91_00_0_Perfect_Photon_Neutron_K0L.root </parameter>
+  <parameter name="RootFile" type="string"> PANDORA_SETTINGS_PERFECT_PHOTON_NEUTRON_K0L_ROOT_FILE </parameter>
   <!--verbosity level of this processor ("DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT")-->
   <!--parameter name="Verbosity" type="string">DEBUG </parameter-->
 </processor>
 
 <processor name="MyMarlinPandoraPerfectPFA" type="PandoraPFANewProcessor">
-  <parameter name="PandoraSettingsXmlFile" type="String"> /usera/sg568/ilcsoft_v01_17_07/JEREvolution/Stage59/PandoraSettings/PandoraSettingsPerfectPFA.xml </parameter>
+  <parameter name="PandoraSettingsXmlFile" type="String"> PANDORA_SETTINGS_PERFECT_PFA_FILE </parameter>
   <!-- Collection names -->
   <parameter name="TrackCollections" type="StringVec">MarlinTrkTracks</parameter>
   <parameter name="ECalCaloHitCollections" type="StringVec">ECALBarrel ECALEndcap ECALOther</parameter>
@@ -1187,18 +1164,18 @@
   <parameter name="ClusterCollectionName" type="String">PandoraClustersPerfectPFA</parameter>
   <parameter name="PFOCollectionName" type="String">PandoraPFOsPerfectPFA</parameter>
   <!-- Calibration constants -->
-  <parameter name="ECalToMipCalibration" type="float">153.846</parameter>
-  <parameter name="HCalToMipCalibration" type="float">36.1011</parameter>
+  <parameter name="ECalToMipCalibration" type="float">ECALTOMIP_XXXX</parameter>
+  <parameter name="HCalToMipCalibration" type="float">HCALTOMIP_XXXX</parameter>
   <parameter name="ECalMipThreshold" type="float">0.5</parameter>
   <parameter name="HCalMipThreshold" type="float">0.3</parameter>
-  <parameter name="ECalToEMGeVCalibration" type="float">1.00215973193</parameter>
-  <parameter name="HCalToEMGeVCalibration" type="float">1.00215973193</parameter>
-  <parameter name="ECalToHadGeVCalibrationBarrel" type="float">1.12219237098</parameter>
-  <parameter name="ECalToHadGeVCalibrationEndCap" type="float">1.12219237098</parameter>
-  <parameter name="HCalToHadGeVCalibration" type="float">1.05372579725</parameter>
-  <parameter name="MuonToMipCalibration" type="float">10.101</parameter>
+  <parameter name="ECalToEMGeVCalibration" type="float">ECALTOEM_XXXX</parameter>
+  <parameter name="HCalToEMGeVCalibration" type="float">HCALTOEM_XXXX</parameter>
+  <parameter name="ECalToHadGeVCalibrationBarrel" type="float">ECALTOHAD_XXXX</parameter>
+  <parameter name="ECalToHadGeVCalibrationEndCap" type="float">ECALTOHAD_XXXX</parameter>
+  <parameter name="HCalToHadGeVCalibration" type="float">HCALTOHAD_XXXX</parameter>
+  <parameter name="MuonToMipCalibration" type="float">MUONTOMIP_XXXX</parameter>
   <parameter name="DigitalMuonHits" type="int">0</parameter>
-  <parameter name="MaxHCalHitHadronicEnergy" type="float">1000000.0</parameter>
+  <parameter name="MaxHCalHitHadronicEnergy" type="float">MHHHE_XXXX</parameter>
   <parameter name="AbsorberRadLengthECal" type="float">0.2854</parameter>
   <parameter name="AbsorberIntLengthECal" type="float">0.0101</parameter>
   <parameter name="AbsorberRadLengthHCal" type="float">0.0569</parameter>
@@ -1219,7 +1196,7 @@
   <!--Set the debug print level-->
   <parameter name="Printing" type="int">0 </parameter>
   <!--Name of the output root file-->
-  <parameter name="RootFile" type="string"> /r06/lc/sg568/ReviewJER/RootFiles/Stage59/5x5_30x30/ILD_o1_v06_uds91_00_0_Perfect_PFA.root </parameter>
+  <parameter name="RootFile" type="string"> PANDORA_SETTINGS_PERFECT_PFA_ROOT_FILE </parameter>
   <!--verbosity level of this processor ("DEBUG0-4,MESSAGE0-4,WARNING0-4,ERROR0-4,SILENT")-->
   <!--parameter name="Verbosity" type="string">DEBUG </parameter-->
 </processor>

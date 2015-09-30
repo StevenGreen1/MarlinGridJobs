@@ -1,0 +1,43 @@
+# Calibration config file for testing
+# Digitisation Constants - ECal 
+CalibrECal = 42.4520342634 84.9040685268
+
+# Digitisation Constants - HCal
+CalibrHCalBarrel = 50.8682895704
+CalibrHCalEndcap = 55.8343896381
+CalibrHCALOther = 29.8814031981
+
+# Digitisation Constants - Muon Chamber
+CalibrMuon = 56.7
+
+# MIP Peak position in directed corrected SimCaloHit energy distributions
+# used for realistic ECal and HCal digitisation options
+CalibrECalMIP = -1
+CalibrHCalMIP = -1
+
+# MIP Peak position in directed corrected CaloHit energy distributions
+# used for MIP definition in PandoraPFA
+ECalToMIPCalibration = 158.73
+HCalToMIPCalibration = 38.61
+MuonToMIPCalibration = 10.101
+
+# EM and Had Scale Settings
+ECalToEMGeVCalibration = 1.0001561024
+HCalToEMGeVCalibration = 1.0001561024
+ECalToHadGeVCalibration = 1.07065539311
+HCalToHadGeVCalibration = 1.11505419659
+
+# Pandora Threshold Cuts
+ECalMIPThresholdPandora = 0.5
+HCalMIPThresholdPandora = 0.3
+
+# Hadronic Energy Truncation in HCal PandoraPFA
+MaxHCalHitHadronicEnergy = 0.75
+
+# Timing ECal
+ECalBarrelTimeWindowMax = 1000000.0
+ECalEndcapTimeWindowMax = 1000000.0
+
+# Timing HCal
+HCalBarrelTimeWindowMax = 1000000.0
+HCalEndcapTimeWindowMax = 1000000.0

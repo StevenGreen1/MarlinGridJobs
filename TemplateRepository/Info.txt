@@ -1,0 +1,3 @@
+Template number 1 : Realistic ECal and HCal used in reconstruction.  ILDCaloDigi used for digitiser.
+Template number 2 : No realistic options in digitiser.  No implicity energy truncation applied either.  ILDCaloDigi used for digitiser.
+Template number 3 : NewLDCCaloDigi used for digitiser.

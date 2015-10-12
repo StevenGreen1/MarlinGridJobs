@@ -1,0 +1,408 @@
+Stage One:
+
+ECal and HCal cell size study using ilcsoft_v01_17_07.  Calibration for these detector models is taken from the DBD.  It also uses the DBD digitisation, which has no timing cuts.
+
+Stage Two:
+
+Recalibrate the detector models used in stage 1.  Again using the old digitisation (NewLDCCaloDigi). MHHHE on (1).
+
+Stage Three:
+
+Recalibrate the detector models used in stage 1.  Again using the old digitisation (NewLDCCaloDigi).  MHHHE off (1,000,000).
+
+Stage Four:
+
+Recalibrate the detector models used in stage 1.  Again using the new digitisation (ILDCaloDigi).  MHHHE on (1). Timing Cuts in ECal 1,000,000 ns, Timing Cuts in HCal 1,000,000 ns.
+
+Stage Five:
+
+Recalibrate the detector models used in stage 1.  Again using the new digitisation (ILDCaloDigi).  MHHHE on (1,000,000). Timing Cuts in ECal 1,000,000 ns, Timing Cuts in HCal 1,000,000 ns.
+
+Stage Six:
+
+Recalibrate the detector models used in stage 1.  Again using the new digitisation (ILDCaloDigi).  MHHHE on (1). Timing Cuts in ECal 10 ns, Timing Cuts in HCal 10ns.
+
+Stage Seven:
+
+Recalibrate the detector models used in stage 1.  Again using the new digitisation (ILDCaloDigi).  MHHHE on (1,000,000). Timing Cuts in ECal 10 ns, Timing Cuts in HCal 10ns.
+
+Stage Eight:
+
+Recalibrate the detector models used in stage 1.  Again using the old digitisation (NewLDCCaloDigi). MHHHE on (0.5).
+
+Stage Nine:
+
+Recalibrate the detector models used in stage 1.  Again using the old digitisation (NewLDCCaloDigi). MHHHE on (0.75).
+
+Stage Ten:
+
+Recalibrate the detector models used in stage 1.  Again using the old digitisation (NewLDCCaloDigi). MHHHE on (1.5).
+
+Stage Eleven:
+
+Recalibrate the detector models used in stage 1.  Again using the old digitisation (NewLDCCaloDigi). MHHHE on (2.0).
+
+Stage Twelve:
+
+Recalibrate the detector models used in stage 1.  Again using the old digitisation (NewLDCCaloDigi). MHHHE on (5.0).
+
+Stage Thirteen:
+
+Recalibrate the detector models used in stage 1.  Again using the old digitisation (NewLDCCaloDigi). MHHHE on (10.0).
+
+Stage Fourteen:
+
+Recalibrate the detector models used in stage 1.  Again using the new digitisation (ILDCaloDigi).  MHHHE on (0.5). Timing Cuts in ECal 1,000,000 ns, Timing Cuts in HCal 1,000,000 ns.
+
+Stage Fifteen:
+
+Recalibrate the detector models used in stage 1.  Again using the new digitisation (ILDCaloDigi).  MHHHE on (0.75). Timing Cuts in ECal 1,000,000 ns, Timing Cuts in HCal 1,000,000 ns.
+
+Stage Sixteen:
+
+Recalibrate the detector models used in stage 1.  Again using the new digitisation (ILDCaloDigi).  MHHHE on (1.5). Timing Cuts in ECal 1,000,000 ns, Timing Cuts in HCal 1,000,000 ns.
+
+Stage Seventeen:
+
+Recalibrate the detector models used in stage 1.  Again using the new digitisation (ILDCaloDigi).  MHHHE on (2.0). Timing Cuts in ECal 1,000,000 ns, Timing Cuts in HCal 1,000,000 ns.
+
+Stage Eighteen:
+
+Recalibrate the detector models used in stage 1.  Again using the new digitisation (ILDCaloDigi).  MHHHE on (5.0). Timing Cuts in ECal 1,000,000 ns, Timing Cuts in HCal 1,000,000 ns.
+
+Stage Nineteen:
+
+Recalibrate the detector models used in stage 1.  Again using the new digitisation (ILDCaloDigi).  MHHHE on (10.0). Timing Cuts in ECal 1,000,000 ns, Timing Cuts in HCal 1,000,000 ns.
+
+Stage 20
+
+Recalibrate the detector models used in stage 1.  Again using the new digitisation (ILDCaloDigi).  MHHHE on (0.5). Timing Cuts in ECal 1,000,000 ns, Timing Cuts in HCal 1,000,000 ns.  Modified digitser code to remove implicit energy truncation and use realistic digitiser.
+
+
+Stage 21
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (0.75). Timing Cuts in ECal 1,000,000 ns,
+Timing Cuts in HCal 1,000,000 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic HCal digitiser.
+
+Stage 22
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1.0). Timing Cuts in ECal 1,000,000 ns,
+Timing Cuts in HCal 1,000,000 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic HCal digitiser.
+
+Stage 23
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1.5). Timing Cuts in ECal 1,000,000 ns,
+Timing Cuts in HCal 1,000,000 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic HCal digitiser.
+
+Stage 24
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (2.0). Timing Cuts in ECal 1,000,000 ns,
+Timing Cuts in HCal 1,000,000 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic HCal digitiser.
+
+Stage 25 
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (5.0). Timing Cuts in ECal 1,000,000 ns,
+Timing Cuts in HCal 1,000,000 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic HCal digitiser.
+
+Stage 26
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (10.0). Timing Cuts in ECal 1,000,000 ns,
+Timing Cuts in HCal 1,000,000 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic HCal digitiser.
+
+Stage 27
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1000000.0). Timing Cuts in ECal 1,000,000 ns,
+Timing Cuts in HCal 1,000,000 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic HCal digitiser.
+
+Stage 28
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (0.5). Timing Cuts in ECal 1,000,000
+ns, Timing Cuts in HCal 1,000,000 ns.  HCAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in HCal)
+
+Stage 29
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (0.75). Timing Cuts in ECal 1,000,000
+ns, Timing Cuts in HCal 1,000,000 ns.  HCAL_maxDynamicRange_MIP = 0 (no 
+electrincs truncation in HCal)
+
+Stage 30
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1.0). Timing Cuts in ECal 1,000,000
+ns, Timing Cuts in HCal 1,000,000 ns.  HCAL_maxDynamicRange_MIP = 0 (no 
+electrincs truncation in HCal)
+
+Stage 31
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1.5). Timing Cuts in ECal 1,000,000
+ns, Timing Cuts in HCal 1,000,000 ns.  HCAL_maxDynamicRange_MIP = 0 (no 
+electrincs truncation in HCal)
+
+Stage 32
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (2.0). Timing Cuts in ECal 1,000,000
+ns, Timing Cuts in HCal 1,000,000 ns.  HCAL_maxDynamicRange_MIP = 0 (no 
+electrincs truncation in HCal)
+
+Stage 33
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (5.0). Timing Cuts in ECal 1,000,000
+ns, Timing Cuts in HCal 1,000,000 ns.  HCAL_maxDynamicRange_MIP = 0 (no 
+electrincs truncation in HCal)
+
+Stage 34
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (10.0). Timing Cuts in ECal 1,000,000
+ns, Timing Cuts in HCal 1,000,000 ns.  HCAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in HCal)
+
+Stage 35
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1000000.0). Timing Cuts in ECal 1,000,000
+ns, Timing Cuts in HCal 1,000,000 ns.  HCAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in HCal)
+
+Stage 36
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (0.5). Timing Cuts in ECal 1,000,000 ns,
+Timing Cuts in HCal 1,000,000 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 37
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (0.75). Timing Cuts in ECal 1,000,000 ns,
+Timing Cuts in HCal 1,000,000 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 38
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1). Timing Cuts in ECal 1,000,000 ns,
+Timing Cuts in HCal 1,000,000 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 39
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1.5). Timing Cuts in ECal 1,000,000 ns,
+Timing Cuts in HCal 1,000,000 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 40
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (2.0). Timing Cuts in ECal 1,000,000 ns,
+Timing Cuts in HCal 1,000,000 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 41
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (5.0). Timing Cuts in ECal 1,000,000 ns,
+Timing Cuts in HCal 1,000,000 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 42
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (10.0). Timing Cuts in ECal 1,000,000 ns,
+Timing Cuts in HCal 1,000,000 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 43
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1000000.0). Timing Cuts in ECal 1,000,000 ns,
+Timing Cuts in HCal 1,000,000 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 44
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (0.5). Timing Cuts in ECal 10 ns,
+Timing Cuts in HCal 10 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 45
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (0.75). Timing Cuts in ECal 10 ns,
+Timing Cuts in HCal 10 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 46
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1). Timing Cuts in ECal 10 ns,
+Timing Cuts in HCal 10 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 47
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1.5). Timing Cuts in ECal 10 ns,
+Timing Cuts in HCal 10 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 48
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (2.0). Timing Cuts in ECal 10 ns,
+Timing Cuts in HCal 10 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 49
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (5.0). Timing Cuts in ECal 10 ns,
+Timing Cuts in HCal 10 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 50
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (10.0). Timing Cuts in ECal 10 ns,
+Timing Cuts in HCal 10 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 51
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1000000.0). Timing Cuts in ECal 10 ns,
+Timing Cuts in HCal 10 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 52
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (0.5). Timing Cuts in ECal 300 ns,
+Timing Cuts in HCal 300 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 53
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (0.75). Timing Cuts in ECal 300 ns,
+Timing Cuts in HCal 300 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 54
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1). Timing Cuts in ECal 300 ns,
+Timing Cuts in HCal 300 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 55
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1.5). Timing Cuts in ECal 300 ns,
+Timing Cuts in HCal 300 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 56
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (2.0). Timing Cuts in ECal 300 ns,
+Timing Cuts in HCal 300 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 57
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (5.0). Timing Cuts in ECal 300 ns,
+Timing Cuts in HCal 300 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 58
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (10.0). Timing Cuts in ECal 300 ns,
+Timing Cuts in HCal 300 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 59
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1000000.0). Timing Cuts in ECal 300 ns,
+Timing Cuts in HCal 300 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.
+
+Stage 60
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1.0). Timing Cuts in ECal 1,000,000 ns,
+Timing Cuts in HCal 1,000,000 ns.  Modified digitser code to remove implicit
+energy truncation and use realistic ECal and HCal digitiser.  Using new photon
+reconstruction algorithms.
+
+Stage 61
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (0.5). Timing Cuts in ECal 1,000,000
+ns, Timing Cuts in HCal 1,000,000 ns.  HCAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in HCal). ECAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in ECal).
+
+
+Stage 62
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (0.75). Timing Cuts in ECal 1,000,000
+ns, Timing Cuts in HCal 1,000,000 ns.  HCAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in HCal). ECAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in ECal).
+
+
+Stage 63
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1.0). Timing Cuts in ECal 1,000,000
+ns, Timing Cuts in HCal 1,000,000 ns.  HCAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in HCal). ECAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in ECal).
+
+
+Stage 64
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1.5). Timing Cuts in ECal 1,000,000
+ns, Timing Cuts in HCal 1,000,000 ns.  HCAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in HCal). ECAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in ECal).
+
+
+Stage 65
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (2.0). Timing Cuts in ECal 1,000,000
+ns, Timing Cuts in HCal 1,000,000 ns.  HCAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in HCal). ECAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in ECal).
+
+
+Stage 66
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (5.0). Timing Cuts in ECal 1,000,000
+ns, Timing Cuts in HCal 1,000,000 ns.  HCAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in HCal). ECAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in ECal).
+
+
+Stage 67
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (10.0). Timing Cuts in ECal 1,000,000
+ns, Timing Cuts in HCal 1,000,000 ns.  HCAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in HCal). ECAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in ECal).
+
+
+Stage 68
+
+Recalibrate the detector models used in stage 1.  Again using the new
+digitisation (ILDCaloDigi).  MHHHE on (1000000.0). Timing Cuts in ECal 1,000,000
+ns, Timing Cuts in HCal 1,000,000 ns.  HCAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in HCal). ECAL_maxDynamicRange_MIP = 0 (no
+electrincs truncation in ECal).
+

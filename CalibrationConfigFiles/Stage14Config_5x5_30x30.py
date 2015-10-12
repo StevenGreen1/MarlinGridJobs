@@ -2,10 +2,13 @@
 # Digitisation Constants - ECal 
 CalibrECal = 42.4520342634
 
-# Digitisation Constants - HCal
+# Digitisation Constants ILDCaloDigi - HCal
 CalibrHCalBarrel = 50.1805391266
 CalibrHCalEndcap = 55.8343896381
-CalibrHCALOther = 29.8814031981
+CalibrHCalOther = 29.8814031981
+
+# Digitisation Constants NewLDCCaloDigi - HCal
+CalibrHCal = -1
 
 # Digitisation Constants - Muon Chamber
 CalibrMuon = 56.7

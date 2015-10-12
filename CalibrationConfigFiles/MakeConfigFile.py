@@ -4,6 +4,7 @@ import sys
 inputSteeringFile = sys.argv[1]
 
 CalibrECAL = '-1'
+CalibrHCAL = '-1'
 CalibrHCALBarrel = '-1'
 CalibrHCALEndcap = '-1'
 CalibrHCALOther = '-1'
@@ -32,6 +33,10 @@ with open(inputSteeringFile) as openFile:
             matchObj = re.match('(.*?)>(.*?)</parameter>(.*?)', line.strip(), re.M|re.I)
             if matchObj:
                 CalibrECAL = matchObj.group(2).strip()
+        if 'CalibrHCAL' in line and 'CalibrHCALBarrel' not in line and 'CalibrHCALEndcap' not in line and 'CalibrHCALOther' not in line:
+            matchObj = re.match('(.*?)>(.*?)</parameter>(.*?)', line.strip(), re.M|re.I)
+            if matchObj:
+                CalibrHCAL = matchObj.group(2).strip()
         elif 'CalibrHCALBarrel' in line:
             matchObj = re.match('(.*?)>(.*?)</parameter>(.*?)', line.strip(), re.M|re.I)
             if matchObj:
@@ -124,10 +129,14 @@ configFileString += '# Digitisation Constants - ECal \n'
 configFileString += 'CalibrECal = ' + CalibrECALToPrint[0] + '\n'
 configFileString += '\n'
 
-configFileString += '# Digitisation Constants - HCal\n'
+configFileString += '# Digitisation Constants ILDCaloDigi - HCal\n'
 configFileString += 'CalibrHCalBarrel = ' + CalibrHCALBarrel + '\n'
 configFileString += 'CalibrHCalEndcap = ' + CalibrHCALEndcap + '\n'
-configFileString += 'CalibrHCALOther = ' + CalibrHCALOther + '\n'
+configFileString += 'CalibrHCalOther = ' + CalibrHCALOther + '\n'
+configFileString += '\n'
+
+configFileString += '# Digitisation Constants NewLDCCaloDigi - HCal\n'
+configFileString += 'CalibrHCal = ' + CalibrHCAL + '\n'
 configFileString += '\n'
 
 configFileString += '# Digitisation Constants - Muon Chamber\n'

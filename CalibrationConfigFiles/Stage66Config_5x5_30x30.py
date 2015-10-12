@@ -1,11 +1,11 @@
 # Calibration config file for testing
 # Digitisation Constants - ECal 
-CalibrECal = 42.4925238195
+CalibrECal = 42.4520342634
 
 # Digitisation Constants ILDCaloDigi - HCal
-CalibrHCalBarrel = 52.8844697272
-CalibrHCalEndcap = 59.5569513399
-CalibrHCalOther = 33.0005470630
+CalibrHCalBarrel = 49.1710071886
+CalibrHCalEndcap = 53.4569694414
+CalibrHCalOther = 28.2164381239
 
 # Digitisation Constants NewLDCCaloDigi - HCal
 CalibrHCal = -1
@@ -21,26 +21,26 @@ CalibrHCalMIP = -1
 # MIP Peak position in directed corrected CaloHit energy distributions
 # used for MIP definition in PandoraPFA
 ECalToMIPCalibration = 158.73
-HCalToMIPCalibration = 36.63
+HCalToMIPCalibration = 39.8406
 MuonToMIPCalibration = 10.101
 
 # EM and Had Scale Settings
-ECalToEMGeVCalibration = 0.999700939889
-HCalToEMGeVCalibration = 0.999700939889
-ECalToHadGeVCalibration = 1.14753389639
-HCalToHadGeVCalibration = 1.05370668956
+ECalToEMGeVCalibration = 1.00013708732
+HCalToEMGeVCalibration = 1.00013708732
+ECalToHadGeVCalibration = 1.10452372966
+HCalToHadGeVCalibration = 1.06418928754
 
 # Pandora Threshold Cuts
 ECalMIPThresholdPandora = 0.5
 HCalMIPThresholdPandora = 0.3
 
 # Hadronic Energy Truncation in HCal PandoraPFA
-MaxHCalHitHadronicEnergy = 1000000
+MaxHCalHitHadronicEnergy = 5.0
 
 # Timing ECal
-ECalBarrelTimeWindowMax = 10.0
-ECalEndcapTimeWindowMax = 10.0
+ECalBarrelTimeWindowMax = 1000000.0
+ECalEndcapTimeWindowMax = 1000000.0
 
 # Timing HCal
-HCalBarrelTimeWindowMax = 10.0
-HCalEndcapTimeWindowMax = 10.0
+HCalBarrelTimeWindowMax = 1000000.0
+HCalEndcapTimeWindowMax = 1000000.0
